@@ -2,7 +2,6 @@ package org.firstinspires.ftc.teamcode.ButtonMaps;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-import org.firstinspires.ftc.teamcode.ComplexRobots.SkystoneRobot;
 import org.firstinspires.ftc.teamcode.ComplexRobots.TrikeRobot;
 
 public abstract class TrikeAbstractButtonMap {

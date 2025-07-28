@@ -5,10 +5,8 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.ButtonMaps.AbstractButtonMap;
 import org.firstinspires.ftc.teamcode.ButtonMaps.DPadControl;
-import org.firstinspires.ftc.teamcode.ButtonMaps.FieldOrientedDrive;
 import org.firstinspires.ftc.teamcode.ButtonMaps.HolonomicDrive;
 import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
-import org.firstinspires.ftc.teamcode.ComplexRobots.IntoTheDeepRobot;
 
 @Config
 public class OutReachBM extends AbstractButtonMap {

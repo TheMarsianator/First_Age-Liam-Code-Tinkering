@@ -4,12 +4,8 @@ import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 
-import org.firstinspires.ftc.teamcode.ButtonMaps.DPadControl;
-import org.firstinspires.ftc.teamcode.ButtonMaps.HolonomicDrive;
 import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
-import org.firstinspires.ftc.teamcode.ButtonMaps.SkystoneAbstractButtonMap;
 import org.firstinspires.ftc.teamcode.ButtonMaps.TrikeAbstractButtonMap;
-import org.firstinspires.ftc.teamcode.ComplexRobots.SkystoneRobot;
 import org.firstinspires.ftc.teamcode.ComplexRobots.TrikeRobot;
 
 @Config

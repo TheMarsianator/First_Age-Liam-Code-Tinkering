@@ -2,9 +2,9 @@ package org.firstinspires.ftc.teamcode.ButtonMaps;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
-import org.firstinspires.ftc.teamcode.ComplexRobots.IntoTheDeepRobot;
+import org.firstinspires.ftc.teamcode.ComplexRobots.TrikeRobot;
 
-public class SampleButtonMap extends AbstractButtonMap{
+public class SampleButtonMap extends TrikeAbstractButtonMap{
     //Instance Variables
     private double a;
 
@@ -15,7 +15,7 @@ public class SampleButtonMap extends AbstractButtonMap{
     }
 
     @Override
-    public void loop(IntoTheDeepRobot robot, OpMode opMode) {
+    public void loop(TrikeRobot robot, OpMode opMode) {
         if(opMode.gamepad1.a) {
 //            robot.armMotor.setPower(0);
         }
