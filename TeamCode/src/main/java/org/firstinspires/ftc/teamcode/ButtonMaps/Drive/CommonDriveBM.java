@@ -8,6 +8,7 @@ import org.firstinspires.ftc.teamcode.ButtonMaps.AbstractButtonMap;
 import org.firstinspires.ftc.teamcode.ButtonMaps.DPadControl;
 import org.firstinspires.ftc.teamcode.ButtonMaps.HolonomicDrive;
 import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
+import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeRobot;
 
 @Config
 public class CommonDriveBM extends AbstractButtonMap {
@@ -27,7 +28,7 @@ public class CommonDriveBM extends AbstractButtonMap {
 
 
     @Override
-    public void loop(IntoTheDeepRobot robot, OpMode opMode) {
+    public void loop(FirstAgeRobot robot, OpMode opMode) {
         mp = new MotorPowers(0);
         currentMotorPower = basePower;
 

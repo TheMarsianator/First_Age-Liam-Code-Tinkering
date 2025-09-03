@@ -2,6 +2,8 @@ package org.firstinspires.ftc.teamcode.ButtonMaps;
 
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
+import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeRobot;
+
 public abstract class AbstractButtonMap {
 
     /**
@@ -11,5 +13,5 @@ public abstract class AbstractButtonMap {
      * @param robot The CenterStageRobot instance for that TeleOp
      * @param opMode Literally "this" - The TeleOp instance
      */
-    public abstract void loop(IntoTheDeepRobot robot, OpMode opMode);
+    public abstract void loop(FirstAgeRobot robot, OpMode opMode);
 }

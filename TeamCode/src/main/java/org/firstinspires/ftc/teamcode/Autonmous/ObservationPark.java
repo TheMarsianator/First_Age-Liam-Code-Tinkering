@@ -10,14 +10,16 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeRobot;
+
 @Autonomous()
 public class ObservationPark extends LinearOpMode {
-    public IntoTheDeepRobot robot;
+    public FirstAgeRobot robot;
     public Encoder par;
 
     @Override
     public void runOpMode() throws InterruptedException {
-        robot = new IntoTheDeepRobot(hardwareMap, new Pose2d(new Vector2d(0,0),0));
+        robot = new FirstAgeRobot(hardwareMap, new Pose2d(new Vector2d(0,0),0));
 
         robot.leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         robot.leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
