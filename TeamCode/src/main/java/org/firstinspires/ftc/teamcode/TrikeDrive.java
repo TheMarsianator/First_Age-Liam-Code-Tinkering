@@ -58,6 +58,9 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+
+//This is a version of Mecanum Drive that is for Trikes.
+
 @Config
 public class TrikeDrive {
     public static class Params {

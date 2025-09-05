@@ -10,6 +10,7 @@ import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
 import org.firstinspires.ftc.teamcode.MecanumDrive;
 import org.firstinspires.ftc.teamcode.TrikeDrive;
 
+//This is right now the same as the TrikeRobot, add Pivot turn at some point and some more functionality.
 
 @Config
 public class FirstAgeRobot extends MecanumDrive {

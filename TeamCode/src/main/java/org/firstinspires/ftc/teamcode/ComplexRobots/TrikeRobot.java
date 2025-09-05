@@ -11,6 +11,7 @@ import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
 import org.firstinspires.ftc.teamcode.MecanumDrive;
 import org.firstinspires.ftc.teamcode.TrikeDrive;
 
+//This robot, as it sounds, is specifically for the trike. It is only for a bot with one motor and one servo as its only control.
 
 @Config
 public class TrikeRobot extends TrikeDrive {
@@ -38,6 +39,7 @@ public class TrikeRobot extends TrikeDrive {
         return new MotorPowers(0,0,0,0);
     }
 
+    //This is meant mostly for slides to extent or run a motor to a certain point.
 
     public void setMotorTo(DcMotorEx motor, int targetPos, double power) {
         if (motor.getCurrentPosition() < targetPos) {

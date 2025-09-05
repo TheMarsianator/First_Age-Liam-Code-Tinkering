@@ -18,6 +18,8 @@ public class Constants {
 
     public static PathConstraints pathConstraints = new PathConstraints(0.99, 100, 1, 1);
 
+
+    //This is where the magic happens baby!
     public static Follower createFollower(HardwareMap hardwareMap) {
         return new FollowerBuilder(followerConstants, hardwareMap)
                 .pathConstraints(pathConstraints)
@@ -26,6 +28,8 @@ public class Constants {
                 .build();
     }
 
+
+    //This is just instantiating the normal driving
     public static MecanumConstants driveConstants = new MecanumConstants()
             .maxPower(1)
             .rightFrontMotorName("rightFront")
@@ -37,6 +41,8 @@ public class Constants {
             .rightFrontMotorDirection(DcMotorSimple.Direction.REVERSE)
             .rightRearMotorDirection(DcMotorSimple.Direction.REVERSE);
 
+
+    //This allows you to use drive encoders, we might swithc later
     public static DriveEncoderConstants localizerConstants = new DriveEncoderConstants()
             .rightFrontMotorName("rightFront")
             .rightRearMotorName("rightBack")
@@ -51,5 +57,6 @@ public class Constants {
             .forwardTicksToInches(multiplier)
             .strafeTicksToInches(multiplier)
             .turnTicksToInches(multiplier);
+
 
 }

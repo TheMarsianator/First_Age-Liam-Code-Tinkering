@@ -52,6 +52,10 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
+
+//This is the main file for creating a robot in the code. The baseline movement and variables that a robot needs are in here.
+//It has to be extended to create a robot class in ComplexRobots
+
 @Config
 public class MecanumDrive {
     public static class Params {
