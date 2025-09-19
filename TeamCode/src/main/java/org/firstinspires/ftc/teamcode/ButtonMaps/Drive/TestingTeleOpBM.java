@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.teamcode.ButtonMaps.AbstractButtonMap;
 import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
+import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeRobot;
 
 @Config
 public class TestingTeleOpBM extends AbstractButtonMap {
@@ -13,7 +14,7 @@ public class TestingTeleOpBM extends AbstractButtonMap {
     private MotorPowers mp;// = new MotorPowers(0);
 
     @Override
-    public void loop(IntoTheDeepRobot robot, OpMode opMode) {
+    public void loop(FirstAgeRobot robot, OpMode opMode) {
         mp = new MotorPowers(0);
         double servoPosition = 0.0;
         double triggerMultiplier = 0.75;

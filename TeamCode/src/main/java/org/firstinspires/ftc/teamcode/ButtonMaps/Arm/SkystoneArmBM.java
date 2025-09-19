@@ -131,11 +131,11 @@ public class SkystoneArmBM extends AbstractButtonMap {
 //
 //
 //        // Specimen Claw
-//        if (opMode.gamepad2.x && !xIsPressed && ((System.currentTimeMillis() - startTime) > timeDelay)) {
-//            xIsPressed = !xIsPressed;
-//            robot.clawServo2.setPosition(-0.5);
-//            robot.clawServo.setPosition(0.5);
-//            specimenTime = System.currentTimeMillis();
+        if (opMode.gamepad2.x && !xIsPressed && ((System.currentTimeMillis() - startTime) > timeDelay)) {
+            xIsPressed = !xIsPressed;
+            robot.clawServo2.setPosition(-0.5);
+            robot.clawServo.setPosition(0.5);
+            specimenTime = System.currentTimeMillis();
 //
 //            opMode.telemetry.addLine("Servo Closed");
 //        } else if (opMode.gamepad2.x && xIsPressed && ((System.currentTimeMillis() - specimenTime) > timeDelay)) {
