@@ -20,8 +20,14 @@ public class TrainingBM extends AbstractButtonMap {
     @Override
     public void loop(FirstAgeRobot robot, OpMode opMode) {
         mp = new MotorPowers(0);
+        double multiplier =.7;
 
-        
+        if(op.gamepad1.x){
+            mp=new MotorPowers(mp.leftFront * multiplier,
+                    mp.rightFront*multiplier,
+                    mp.leftBack * multiplier,
+                    mp.rightBack * multiplier);
+        }
 
 
         opMode.telemetry.update();
