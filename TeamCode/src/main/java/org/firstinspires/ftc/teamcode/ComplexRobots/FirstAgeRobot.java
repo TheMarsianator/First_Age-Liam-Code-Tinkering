@@ -15,7 +15,7 @@ import org.firstinspires.ftc.teamcode.TrikeDrive;
 @Config
 public class FirstAgeRobot extends MecanumDrive {
     enum Direction {
-        UP,DOWNw
+        UP,DOWN
     }
 
 //    public final DcMotorEx horizontalSlideMotor;
