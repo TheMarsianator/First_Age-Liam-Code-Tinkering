@@ -7,7 +7,7 @@ import org.firstinspires.ftc.teamcode.ButtonMaps.AbstractButtonMap;
 import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
 
 @Config
-public class Team2BM extends AbstractButtonMap {
+public class TestingTeleOpBM extends AbstractButtonMap {
 
     private double currentMotorPower;
     private MotorPowers mp;// = new MotorPowers(0);
