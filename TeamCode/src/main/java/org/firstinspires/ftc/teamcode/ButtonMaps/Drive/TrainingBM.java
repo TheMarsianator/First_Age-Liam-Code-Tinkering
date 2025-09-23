@@ -44,16 +44,16 @@ public class TrainingBM extends AbstractButtonMap {
             }
         }
         if (opMode.gamepad1.left_trigger>0.3){
-            mp = new MotorPowers(-1 * multiplier * opMode.gamepad1.right_trigger>,
-                    1 * multiplier * opMode.gamepad1.right_trigger>,
-                    -1 * multiplier * opMode.gamepad1.right_trigger>,
-                    1 * multiplier* opMode.gamepad1.right_trigger>);
+            mp = new MotorPowers(-1 * multiplier * opMode.gamepad1.right_trigger,
+                    1 * multiplier * opMode.gamepad1.right_trigger,
+                    -1 * multiplier * opMode.gamepad1.right_trigger,
+                    1 * multiplier* opMode.gamepad1.right_trigger);
         }
         if (opMode.gamepad1.right_trigger>0.3){
-            mp = new MotorPowers(1 * multiplier * opMode.gamepad1.right_trigger>,
-                    -1 * multiplier * opMode.gamepad1.right_trigger>,
-                    1 * multiplier * opMode.gamepad1.right_trigger>,
-                    -1 * multiplier* opMode.gamepad1.right_trigger>);
+            mp = new MotorPowers(1 * multiplier * opMode.gamepad1.right_trigger,
+                    -1 * multiplier * opMode.gamepad1.right_trigger,
+                    1 * multiplier * opMode.gamepad1.right_trigger,
+                    -1 * multiplier* opMode.gamepad1.right_trigger);
         }
 
 
