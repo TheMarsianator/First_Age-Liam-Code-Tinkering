@@ -21,6 +21,8 @@ public class ExtraTrainBM extends AbstractButtonMap {
     public void loop(FirstAgeRobot robot, OpMode opMode) {
         mp = new MotorPowers(0);
 
+
+        //forwards
         if(Math.abs(opMode.gamepad1.left_stick_y) > 0.1){
             mp = new MotorPowers(opMode.gamepad1.left_stick_y * stickMultipler,
                     opMode.gamepad1.left_stick_y * stickMultipler,
@@ -29,6 +31,8 @@ public class ExtraTrainBM extends AbstractButtonMap {
             opMode.telemetry.addLine("Joystick (forward) active!");
             opMode.telemetry.addData("Joystick: ", opMode.gamepad1.left_stick_y);
         }
+
+        //backwards
         if(Math.abs(opMode.gamepad1.left_stick_y) < -0.1){
             mp = new MotorPowers(-opMode.gamepad1.left_stick_y * stickMultipler,
                     -opMode.gamepad1.left_stick_y * stickMultipler,
@@ -38,6 +42,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
             opMode.telemetry.addData("Joystick: ", opMode.gamepad1.left_stick_y);
         }
 
+        //turn right
         if(Math.abs(opMode.gamepad1.right_stick_x) > 0.1){
             mp = new MotorPowers(opMode.gamepad1.right_stick_x * stickMultipler,
                     -opMode.gamepad1.right_stick_x * stickMultipler,
@@ -47,6 +52,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
             opMode.telemetry.addData("Joystick: ", opMode.gamepad1.right_stick_x);
         }
 
+        //turn left
         if(Math.abs(opMode.gamepad1.right_stick_x) < -0.1){
             mp = new MotorPowers(-opMode.gamepad1.right_stick_x * stickMultipler,
                     -opMode.gamepad1.right_stick_x * stickMultipler,
@@ -56,6 +62,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
             opMode.telemetry.addData("Joystick: ", opMode.gamepad1.right_stick_x);
         }
 
+        //accelerate
         if(Math.abs(opMode.gamepad1.right_trigger) > 0.1) {
             mp = new MotorPowers(opMode.gamepad1.right_trigger * 1.1 * stickMultipler,
                     opMode.gamepad1.right_trigger * 1.1 * stickMultipler,
@@ -65,6 +72,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
             opMode.telemetry.addData("Right Trigger: ", opMode.gamepad1.right_trigger);
         }
 
+        //slow down
         if (opMode.gamepad1.left_trigger > 0.1) {
             mp = new MotorPowers(opMode.gamepad1.left_trigger * slowStrafeMultiplier,
                     opMode.gamepad1.left_trigger * slowStrafeMultiplier,
@@ -73,6 +81,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
             opMode.telemetry.addLine("Slow Multiplier Active!");
         }
 
+        //brake
         if (opMode.gamepad1.b) {
             robot.setAllMotorPowers(0);
             robot.leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -100,8 +109,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
             opMode.telemetry.addLine("Left Strafe active!");
         }
 
-        //diagonal motion?
-
+        //servo positions
         else if (opMode.gamepad1.y) {
             servoPosition = 1;
         }
@@ -111,7 +119,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
 
         else if (opMode.gamepad1.a) {
             servoPosition = -1;
-            }
+        }
 
         robot.turnServo.setPosition(servoPosition);
         opMode.telemetry.update();
