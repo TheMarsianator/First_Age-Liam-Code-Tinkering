@@ -11,15 +11,14 @@ import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeRobot;
 @Config
 public class ExtraTrainBM extends AbstractButtonMap {
     //TODO: Change back to private final when done with dash
-    private double currentMotorPower;
     private MotorPowers mp;// = new MotorPowers(0);
-    private double stickMultipler = 0.7;
-    private double slowStrafeMultiplier = 0.5;
-    private double servoPosition;
+    private double stickMultipler = 0.7;  //motor multiplier for movement with joystick
+    private double slowMultiplier = 0.5;  //motor multiplier to slow down
+    private double servoPosition;  //variable that stores servo position
 
     @Override
     public void loop(FirstAgeRobot robot, OpMode opMode) {
-        mp = new MotorPowers(0);
+        mp = new MotorPowers(0);  //sets all motor powers to 0
 
 
         //forwards
@@ -28,8 +27,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
                     opMode.gamepad1.left_stick_y * stickMultipler,
                     opMode.gamepad1.left_stick_y * stickMultipler,
                     opMode.gamepad1.left_stick_y * stickMultipler);
-            opMode.telemetry.addLine("Joystick (forward) active!");
-            opMode.telemetry.addData("Joystick: ", opMode.gamepad1.left_stick_y);
+            opMode.telemetry.addLine("Joystick (forward) active!");  //shows up in console
         }
 
         //backwards
@@ -38,8 +36,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
                     -opMode.gamepad1.left_stick_y * stickMultipler,
                     -opMode.gamepad1.left_stick_y * stickMultipler,
                     -opMode.gamepad1.left_stick_y * stickMultipler);
-            opMode.telemetry.addLine("Joystick (backwards) active!");
-            opMode.telemetry.addData("Joystick: ", opMode.gamepad1.left_stick_y);
+            opMode.telemetry.addLine("Joystick (backwards) active!");  //shows up in console
         }
 
         //turn right
@@ -48,8 +45,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
                     -opMode.gamepad1.right_stick_x * stickMultipler,
                     opMode.gamepad1.right_stick_x * stickMultipler,
                     -opMode.gamepad1.right_stick_x * stickMultipler);
-            opMode.telemetry.addLine("Joystick (right turn) active!");
-            opMode.telemetry.addData("Joystick: ", opMode.gamepad1.right_stick_x);
+            opMode.telemetry.addLine("Joystick (right turn) active!");  //shows up in console
         }
 
         //turn left
@@ -58,8 +54,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
                     -opMode.gamepad1.right_stick_x * stickMultipler,
                     -opMode.gamepad1.right_stick_x * stickMultipler,
                     -opMode.gamepad1.right_stick_x * stickMultipler);
-            opMode.telemetry.addLine("Joystick (left turn) active!");
-            opMode.telemetry.addData("Joystick: ", opMode.gamepad1.right_stick_x);
+            opMode.telemetry.addLine("Joystick (left turn) active!");  //shows up in console
         }
 
         //accelerate
@@ -68,17 +63,16 @@ public class ExtraTrainBM extends AbstractButtonMap {
                     opMode.gamepad1.right_trigger * 1.1 * stickMultipler,
                     opMode.gamepad1.right_trigger * 1.1 * stickMultipler,
                     opMode.gamepad1.right_trigger * 1.1 * stickMultipler);
-            opMode.telemetry.addLine("Right Trigger (accelerate) active!");
-            opMode.telemetry.addData("Right Trigger: ", opMode.gamepad1.right_trigger);
+            opMode.telemetry.addLine("Right Trigger (accelerate) active!");  //shows up in console
         }
 
         //slow down
         if (opMode.gamepad1.left_trigger > 0.1) {
-            mp = new MotorPowers(opMode.gamepad1.left_trigger * slowStrafeMultiplier,
-                    opMode.gamepad1.left_trigger * slowStrafeMultiplier,
-                    opMode.gamepad1.left_trigger * slowStrafeMultiplier,
-                    opMode.gamepad1.left_trigger * slowStrafeMultiplier);
-            opMode.telemetry.addLine("Slow Multiplier Active!");
+            mp = new MotorPowers(opMode.gamepad1.left_trigger * slowMultiplier,
+                    opMode.gamepad1.left_trigger * slowMultiplier,
+                    opMode.gamepad1.left_trigger * slowMultiplier,
+                    opMode.gamepad1.left_trigger * slowMultiplier);
+            opMode.telemetry.addLine("Slow Multiplier Active!");  //shows up in console
         }
 
         //brake
@@ -88,7 +82,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
             robot.leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             robot.rightBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
             robot.rightFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-            opMode.telemetry.addLine("Brake!!");
+            opMode.telemetry.addLine("Brake!!");  //shows up in console
         }
 
         //strafe right
@@ -97,7 +91,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
                     -0.5,
                     -0.5,
                     0.5);
-            opMode.telemetry.addLine("Right Strafe active!");
+            opMode.telemetry.addLine("Right Strafe active!");  //shows up in console
         }
 
         //strafe left
@@ -106,19 +100,19 @@ public class ExtraTrainBM extends AbstractButtonMap {
                     0.5,
                     0.5,
                     -0.5);
-            opMode.telemetry.addLine("Left Strafe active!");
+            opMode.telemetry.addLine("Left Strafe active!");  //shows up in console
         }
 
         //servo positions
         else if (opMode.gamepad1.y) {
-            servoPosition = 1;
+            servoPosition = 1;  //assume left
         }
         else if (opMode.gamepad1.x) {
-            servoPosition = 0;
+            servoPosition = 0;  //assume rest
         }
 
         else if (opMode.gamepad1.a) {
-            servoPosition = -1;
+            servoPosition = -1;  //assume right
         }
 
         robot.turnServo.setPosition(servoPosition);
