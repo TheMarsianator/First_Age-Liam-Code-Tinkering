@@ -113,9 +113,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
             servoPosition = -1;
             }
 
-
-
-        robot.servo1.setPosition(servoPosition);
+        robot.turnServo.setPosition(servoPosition);
         opMode.telemetry.update();
         robot.setMotorPowers(mp);
     }
