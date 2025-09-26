@@ -100,8 +100,6 @@ public class ExtraTrainBM extends AbstractButtonMap {
             opMode.telemetry.addLine("Left Strafe active!");
         }
 
-        //diagonal motion?
-
         else if (opMode.gamepad1.y) {
             servoPosition = 1;
         }
@@ -115,7 +113,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
 
 
 
-        robot.servo1.setPosition(servoPosition);
+        robot.turnServo.setPosition(servoPosition);
         opMode.telemetry.update();
         robot.setMotorPowers(mp);
     }
