@@ -53,10 +53,10 @@ public class Constants {
             .rightFrontEncoderDirection(Encoder.REVERSE)
             .rightRearEncoderDirection(Encoder.REVERSE)
             .robotWidth(10)
-            .robotLength(10)
-            .forwardTicksToInches(multiplier)
-            .strafeTicksToInches(multiplier)
-            .turnTicksToInches(multiplier);
+            .robotLength(10);
+//            .forwardTicksToInches(multiplier)
+//            .strafeTicksToInches(multiplier)
+//            .turnTicksToInches(multiplier);
 
 
 }
