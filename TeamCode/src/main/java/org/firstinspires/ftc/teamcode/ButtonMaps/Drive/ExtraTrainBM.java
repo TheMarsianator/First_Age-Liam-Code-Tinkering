@@ -12,7 +12,7 @@ import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeRobot;
 public class ExtraTrainBM extends AbstractButtonMap {
     //TODO: Change back to private final when done with dash
     private MotorPowers mp;// = new MotorPowers(0);
-    private double stickMultipler = 0.7;  //motor multiplier for movement with joystick
+    private double stickMultiplier = 0.7;  //motor multiplier for movement with joystick
     private double slowMultiplier = 0.5;  //motor multiplier to slow down
     private double servoPosition;  //variable that stores servo position
 
@@ -23,46 +23,46 @@ public class ExtraTrainBM extends AbstractButtonMap {
 
         //forwards
         if(Math.abs(opMode.gamepad1.left_stick_y) > 0.1){
-            mp = new MotorPowers(opMode.gamepad1.left_stick_y * stickMultipler,
-                    opMode.gamepad1.left_stick_y * stickMultipler,
-                    opMode.gamepad1.left_stick_y * stickMultipler,
-                    opMode.gamepad1.left_stick_y * stickMultipler);
+            mp = new MotorPowers(opMode.gamepad1.left_stick_y * stickMultiplier,
+                    opMode.gamepad1.left_stick_y * stickMultiplier,
+                    opMode.gamepad1.left_stick_y * stickMultiplier,
+                    opMode.gamepad1.left_stick_y * stickMultiplier);
             opMode.telemetry.addLine("Joystick (forward) active!");  //shows up in console
         }
 
         //backwards
         if(Math.abs(opMode.gamepad1.left_stick_y) < -0.1){
-            mp = new MotorPowers(-opMode.gamepad1.left_stick_y * stickMultipler,
-                    -opMode.gamepad1.left_stick_y * stickMultipler,
-                    -opMode.gamepad1.left_stick_y * stickMultipler,
-                    -opMode.gamepad1.left_stick_y * stickMultipler);
+            mp = new MotorPowers(-opMode.gamepad1.left_stick_y * stickMultiplier,
+                    -opMode.gamepad1.left_stick_y * stickMultiplier,
+                    -opMode.gamepad1.left_stick_y * stickMultiplier,
+                    -opMode.gamepad1.left_stick_y * stickMultiplier);
             opMode.telemetry.addLine("Joystick (backwards) active!");  //shows up in console
         }
 
         //turn right
         if(Math.abs(opMode.gamepad1.right_stick_x) > 0.1){
-            mp = new MotorPowers(opMode.gamepad1.right_stick_x * stickMultipler,
-                    -opMode.gamepad1.right_stick_x * stickMultipler,
-                    opMode.gamepad1.right_stick_x * stickMultipler,
-                    -opMode.gamepad1.right_stick_x * stickMultipler);
+            mp = new MotorPowers(opMode.gamepad1.right_stick_x * stickMultiplier,
+                    -opMode.gamepad1.right_stick_x * stickMultiplier,
+                    opMode.gamepad1.right_stick_x * stickMultiplier,
+                    -opMode.gamepad1.right_stick_x * stickMultiplier);
             opMode.telemetry.addLine("Joystick (right turn) active!");  //shows up in console
         }
 
         //turn left
         if(Math.abs(opMode.gamepad1.right_stick_x) < -0.1){
-            mp = new MotorPowers(-opMode.gamepad1.right_stick_x * stickMultipler,
-                    -opMode.gamepad1.right_stick_x * stickMultipler,
-                    -opMode.gamepad1.right_stick_x * stickMultipler,
-                    -opMode.gamepad1.right_stick_x * stickMultipler);
+            mp = new MotorPowers(-opMode.gamepad1.right_stick_x * stickMultiplier,
+                    -opMode.gamepad1.right_stick_x * stickMultiplier,
+                    -opMode.gamepad1.right_stick_x * stickMultiplier,
+                    -opMode.gamepad1.right_stick_x * stickMultiplier);
             opMode.telemetry.addLine("Joystick (left turn) active!");  //shows up in console
         }
 
         //accelerate
         if(Math.abs(opMode.gamepad1.right_trigger) > 0.1) {
-            mp = new MotorPowers(opMode.gamepad1.right_trigger * 1.1 * stickMultipler,
-                    opMode.gamepad1.right_trigger * 1.1 * stickMultipler,
-                    opMode.gamepad1.right_trigger * 1.1 * stickMultipler,
-                    opMode.gamepad1.right_trigger * 1.1 * stickMultipler);
+            mp = new MotorPowers(opMode.gamepad1.right_trigger * 1.1 * stickMultiplier,
+                    opMode.gamepad1.right_trigger * 1.1 * stickMultiplier,
+                    opMode.gamepad1.right_trigger * 1.1 * stickMultiplier,
+                    opMode.gamepad1.right_trigger * 1.1 * stickMultiplier);
             opMode.telemetry.addLine("Right Trigger (accelerate) active!");  //shows up in console
         }
 
