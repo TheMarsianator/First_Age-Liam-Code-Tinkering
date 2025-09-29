@@ -10,7 +10,7 @@ import org.firstinspires.ftc.teamcode.ButtonMaps.Drive.TrainingBM;
 import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeRobot;
 import org.firstinspires.ftc.teamcode.ComplexRobots.TrikeRobot;
 
-@TeleOp(name="Trike TeleOp")
+@TeleOp(name="Training TeleOp")
 public class trainingTeleOp extends OpMode {
     //Global Variables
     FirstAgeRobot robot;
