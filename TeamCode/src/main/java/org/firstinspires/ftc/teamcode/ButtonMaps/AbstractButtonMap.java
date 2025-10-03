@@ -13,5 +13,6 @@ public abstract class AbstractButtonMap {
      * @param robot The CenterStageRobot instance for that TeleOp
      * @param opMode Literally "this" - The TeleOp instance
      */
-    public abstract void loop(FirstAgeRobot robot, OpMode opMode);
+    public abstract void loop(FirstAgeRobot robot,
+                              OpMode opMode);
 }
