@@ -22,18 +22,18 @@ public class ExtraTrainBM extends AbstractButtonMap {
         mp = new MotorPowers(0);
 
         if(Math.abs(opMode.gamepad1.left_stick_y) > 0.1){
-            mp = new MotorPowers(opMode.gamepad1.left_stick_y * stickMultipler,
-                    opMode.gamepad1.left_stick_y * stickMultipler,
-                    opMode.gamepad1.left_stick_y * stickMultipler,
-                    opMode.gamepad1.left_stick_y * stickMultipler);
-            opMode.telemetry.addLine("Joystick (forward) active!");
-            opMode.telemetry.addData("Joystick: ", opMode.gamepad1.left_stick_y);
-        }
-        if(Math.abs(opMode.gamepad1.left_stick_y) < -0.1){
             mp = new MotorPowers(-opMode.gamepad1.left_stick_y * stickMultipler,
                     -opMode.gamepad1.left_stick_y * stickMultipler,
                     -opMode.gamepad1.left_stick_y * stickMultipler,
                     -opMode.gamepad1.left_stick_y * stickMultipler);
+            opMode.telemetry.addLine("Joystick (forward) active!");
+            opMode.telemetry.addData("Joystick: ", opMode.gamepad1.left_stick_y);
+        }
+        if(Math.abs(opMode.gamepad1.left_stick_y) < -0.1){
+            mp = new MotorPowers(opMode.gamepad1.left_stick_y * stickMultipler,
+                    opMode.gamepad1.left_stick_y * stickMultipler,
+                    opMode.gamepad1.left_stick_y * stickMultipler,
+                    opMode.gamepad1.left_stick_y * stickMultipler);
             opMode.telemetry.addLine("Joystick (backwards) active!");
             opMode.telemetry.addData("Joystick: ", opMode.gamepad1.left_stick_y);
         }
@@ -86,7 +86,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
         if (opMode.gamepad1.dpad_right) {
             mp = new MotorPowers(0.5,
                     -0.5,
-                    -0.5,
+                    0.5,
                     0.5);
             opMode.telemetry.addLine("Right Strafe active!");
         }
@@ -95,7 +95,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
         if (opMode.gamepad1.dpad_left) {
             mp = new MotorPowers(-0.5,
                     0.5,
-                    0.5,
+                    -0.5,
                     -0.5);
             opMode.telemetry.addLine("Left Strafe active!");
         }
