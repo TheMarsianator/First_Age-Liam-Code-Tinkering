@@ -135,7 +135,7 @@ public class TrainingBM extends AbstractButtonMap {
                         -speed,
                         -speed,
                         speedY);
-            } else if (opMode.gamepad1.left_stick_x <= 0 && opMode.gamepad1.left_stick_y <= 0) {
+            } else if (opMode.gamepad1.left_stick_x <= 0 && opMode.gamepad1.left_stick_x >= 0) {
                 mp = new MotorPowers(-speed,
                         speedY,
                         speedY,
