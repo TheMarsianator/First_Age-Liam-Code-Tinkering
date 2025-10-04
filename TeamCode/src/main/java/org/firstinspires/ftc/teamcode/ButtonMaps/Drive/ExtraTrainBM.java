@@ -38,7 +38,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
             opMode.telemetry.addData("Joystick: ", opMode.gamepad1.left_stick_y);
         }
 
-        if(Math.abs(opMode.gamepad1.right_stick_x) < -0.2){
+        if(Math.abs(opMode.gamepad1.right_stick_x) > 0.2){
             mp = new MotorPowers(opMode.gamepad1.right_stick_x * stickMultipler,
                     -opMode.gamepad1.right_stick_x * stickMultipler,
                     opMode.gamepad1.right_stick_x * stickMultipler,
@@ -47,7 +47,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
             opMode.telemetry.addData("Joystick: ", opMode.gamepad1.right_stick_x);
         }
 
-        if(Math.abs(opMode.gamepad1.right_stick_x) > 0.2){
+        if(Math.abs(opMode.gamepad1.right_stick_x) < -0.2){
             mp = new MotorPowers(-opMode.gamepad1.right_stick_x * stickMultipler,
                     -opMode.gamepad1.right_stick_x * stickMultipler,
                     -opMode.gamepad1.right_stick_x * stickMultipler,
