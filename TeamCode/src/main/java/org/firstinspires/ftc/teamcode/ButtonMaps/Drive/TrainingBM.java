@@ -135,16 +135,16 @@ public class TrainingBM extends AbstractButtonMap {
                         -speed,
                         -speed,
                         speedY);
-            } else if (opMode.gamepad1.right_stick_x <= 0 && opMode.gamepad1.right_stick_y <= 0) {
-                mp = new MotorPowers(speed,
-                        -speedY,
-                        -speedY,
-                        speed);
+            } else if (opMode.gamepad1.right_stick_x <= 0 && opMode.gamepad1.right_stick_y  >= 0) {
+                mp = new MotorPowers(-speed,
+                        speedY,
+                        speedY,
+                        -speed);
             } else {
-                mp = new MotorPowers(-speedX,
-                        -speed,
-                        -speed,
-                        -speedX);
+                mp = new MotorPowers(speedX,
+                        speed,
+                        speed,
+                        speedX);
             }
             //mp = HolonomicDrive.JoystickHoloDrive(opMode.gamepad1);
         }
