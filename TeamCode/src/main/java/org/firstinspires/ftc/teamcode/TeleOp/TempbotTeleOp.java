@@ -5,6 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.ButtonMaps.AbstractButtonMap;
+import org.firstinspires.ftc.teamcode.ButtonMaps.Arm.FirstAgeArm;
 import org.firstinspires.ftc.teamcode.ButtonMaps.Drive.TempBotDrive;
 import org.firstinspires.ftc.teamcode.ButtonMaps.Drive.TrainingBM;
 import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeTempbot;
@@ -24,7 +25,7 @@ public class TempbotTeleOp extends OpMode {
         telemetry.update();
         robot = new FirstAgeTempbot(hardwareMap, new Pose2d(0,0,0));
         driveButtonMap = new TempBotDrive();
-        armButtonMap = new TempBotDrive();
+        armButtonMap = new FirstAgeArm();
         telemetry.addLine("Ready.");
         telemetry.update();
     }

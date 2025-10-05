@@ -15,7 +15,7 @@ public class FirstAgeArm extends AbstractButtonMap {
 
     @Override
     public void loop(FirstAgeTempbot robot, OpMode opMode) {
-        mp = new MotorPowers(0);
+//        mp = new MotorPowers(0);
 
 
 
@@ -23,8 +23,8 @@ public class FirstAgeArm extends AbstractButtonMap {
 
 
 
-        robot.turnServo.setPosition(servoPosition);
+//        robot.turnServo.setPosition(servoPosition);
         opMode.telemetry.update();
-        robot.setMotorPowers(mp);
+//        robot.setMotorPowers(mp);
     }
 }

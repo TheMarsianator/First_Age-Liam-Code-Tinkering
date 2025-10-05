@@ -1,5 +1,6 @@
 package org.firstinspires.ftc.teamcode.ButtonMaps;
 
+import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.IMU;
 
@@ -25,18 +26,19 @@ public class HolonomicDrive {
         return new MotorPowers(frontLeftPower, frontRightPower, backLeftPower, backRightPower);
     }
 
-    public static MotorPowers JoystickHoloDrive(Gamepad gamepad1) {
+    public static MotorPowers JoystickHoloDrive(Gamepad gamepad1, OpMode opMode) {
         // Read joystick values
         double y = -gamepad1.left_stick_y;
         double x = gamepad1.left_stick_x * 1.1;
-
+        opMode.telemetry.addData("HoloDrive y", y);
+        opMode.telemetry.addData("HoloDrive x", x);
         double denominator = Math.max(Math.abs(y) + Math.abs(x), 1);
 
         double frontLeftPower = (y + x) / denominator;
         double backLeftPower = (y - x) / denominator;
         double frontRightPower = (y - x) / denominator;
         double backRightPower = (y + x) / denominator;
-
+        opMode.telemetry.addData("HoloDrive frontLeft", frontLeftPower);
         return new MotorPowers(frontLeftPower, frontRightPower, backLeftPower, backRightPower);
     }
 }

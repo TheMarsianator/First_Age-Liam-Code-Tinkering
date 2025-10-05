@@ -24,14 +24,14 @@ public class FirstAgeTempbot extends MecanumDrive {
     //    public final Servo intakeServo;
 
 
-    public final Servo turnServo;
+//    public final Servo turnServo;
 //    public final SensorLimelight3A limelight;
 
     public FirstAgeTempbot(HardwareMap hardwareMap, Pose2d pose) {
         super(hardwareMap, pose);
 
         //Initialize Servos
-        turnServo = hardwareMap.get(Servo.class, "turnServo");
+//        turnServo = hardwareMap.get(Servo.class, "turnServo");
 //        aimServo = hardwareMap.get(Servo.class, "aimServo");
 //        angleServo = hardwareMap.get(Servo.class, "angleServo");
 //        intakeServo = hardwareMap.get(Servo.class, "intakeServo");
@@ -43,7 +43,7 @@ public class FirstAgeTempbot extends MecanumDrive {
 
 
         //Initialize Output Servo
-        turnServo.scaleRange(-1,1);
+//        turnServo.scaleRange(-1,1);
 //        aimServo.scaleRange(-1,0);
 //        intakeServo.scaleRange(-1,0);
 //        angleServo.scaleRange(-1,0);

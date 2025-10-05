@@ -35,11 +35,11 @@ public class TrainingBM extends AbstractButtonMap {
         //Opens or closes the servo when button a on gamepad is pressed
         if (opMode.gamepad1.a) {
             servoState = !servoState;
-            if (servoState) {
-                robot.turnServo.setPosition(1);
-            } else {
-                robot.turnServo.setPosition(-1);
-            }
+//            if (servoState) {
+//                robot.turnServo.setPosition(1);
+//            } else {
+//                robot.turnServo.setPosition(-1);
+//            }
         }
         //When left trigger is pressed, turn left while staying in place
         if (opMode.gamepad1.left_trigger>0.3){
@@ -148,7 +148,7 @@ public class TrainingBM extends AbstractButtonMap {
         }
         if (Math.abs(opMode.gamepad1.left_stick_x) > 0.4 || Math.abs(opMode.gamepad1.left_stick_y) > 0.4) {
 
-            mp = HolonomicDrive.JoystickHoloDrive(opMode.gamepad1);
+            mp = HolonomicDrive.JoystickHoloDrive(opMode.gamepad1, opMode);
 
        }
             mp = new MotorPowers(mp.leftFront, mp.rightFront, mp.leftBack, mp.rightBack);
