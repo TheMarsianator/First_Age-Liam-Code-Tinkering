@@ -9,7 +9,7 @@ import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
 import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeTempbot;
 
 @Config
-public class TrainingBM extends AbstractButtonMap {
+public class TempBotDrive extends AbstractButtonMap {
 
     private MotorPowers mp;// = new MotorPowers(0);
     private boolean servoState=false;
@@ -120,38 +120,10 @@ public class TrainingBM extends AbstractButtonMap {
 
         //Allows Joystick to control where the robot goes
         if (Math.abs(opMode.gamepad1.right_stick_x) > 0.4 || Math.abs(opMode.gamepad1.right_stick_y) > 0.4) {
-            double speed = Math.sqrt(opMode.gamepad1.right_stick_y * opMode.gamepad1.right_stick_y + opMode.gamepad1.right_stick_x * opMode.gamepad1.right_stick_x);
-            double speedX = speed - 2 * opMode.gamepad1.right_stick_x * opMode.gamepad1.right_stick_x;
-            double speedY = speed - 2 * opMode.gamepad1.right_stick_y * opMode.gamepad1.right_stick_y;
-            if (opMode.gamepad1.right_stick_x >= 0 && opMode.gamepad1.right_stick_y <= 0) {
-                mp = new MotorPowers(speed,
-                        speedX,
-                        speedX,
-                        speed);
-            } else if (opMode.gamepad1.right_stick_x >= 0 && opMode.gamepad1.right_stick_y >= 0) {
-                mp = new MotorPowers(speedY,
-                        -speed,
-                        -speed,
-                        speedY);
-            } else if (opMode.gamepad1.right_stick_x <= 0 && opMode.gamepad1.right_stick_y  >= 0) {
-                mp = new MotorPowers(-speed,
-                        speedY,
-                        speedY,
-                        -speed);
-            } else {
-                mp = new MotorPowers(speedX,
-                        speed,
-                        speed,
-                        speedX);
-            }
-            //mp = HolonomicDrive.JoystickHoloDrive(opMode.gamepad1);
-        }
-        if (Math.abs(opMode.gamepad1.left_stick_x) > 0.4 || Math.abs(opMode.gamepad1.left_stick_y) > 0.4) {
-
             mp = HolonomicDrive.JoystickHoloDrive(opMode.gamepad1);
+        }
 
-       }
-            mp = new MotorPowers(mp.leftFront, mp.rightFront, mp.leftBack, mp.rightBack);
+        mp = new MotorPowers(mp.leftFront, mp.rightFront, mp.leftBack, mp.rightBack);
 
         opMode.telemetry.update();
         robot.setMotorPowers(mp);

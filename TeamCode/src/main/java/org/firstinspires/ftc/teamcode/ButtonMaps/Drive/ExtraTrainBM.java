@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 
 import org.firstinspires.ftc.teamcode.ButtonMaps.AbstractButtonMap;
 import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
-import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeRobot;
+import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeTempbot;
 
 @Config
 public class ExtraTrainBM extends AbstractButtonMap {
@@ -18,7 +18,7 @@ public class ExtraTrainBM extends AbstractButtonMap {
     private double servoPosition;
 
     @Override
-    public void loop(FirstAgeRobot robot, OpMode opMode) {
+    public void loop(FirstAgeTempbot robot, OpMode opMode) {
         mp = new MotorPowers(0);
 
         if(Math.abs(opMode.gamepad1.left_stick_y) > 0.2){
