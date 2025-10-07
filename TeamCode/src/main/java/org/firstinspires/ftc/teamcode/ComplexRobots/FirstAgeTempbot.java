@@ -6,8 +6,14 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
+import org.firstinspires.ftc.robotcontroller.external.samples.SensorLimelight3A;
+import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
+import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
 import org.firstinspires.ftc.teamcode.MecanumDrive;
+import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
 
 //This is right now the same as the TrikeRobot, add Pivot turn at some point and some more functionality.
 
@@ -25,10 +31,12 @@ public class FirstAgeTempbot extends MecanumDrive {
 
 
 //    public final Servo turnServo;
-//    public final SensorLimelight3A limelight;
+    public final SensorLimelight3A limelight;
 
     public FirstAgeTempbot(HardwareMap hardwareMap, Pose2d pose) {
         super(hardwareMap, pose);
+
+        limelight = new SensorLimelight3A();
 
         //Initialize Servos
 //        turnServo = hardwareMap.get(Servo.class, "turnServo");
@@ -67,4 +75,9 @@ public class FirstAgeTempbot extends MecanumDrive {
             }
         }
     }
-    }
+
+//    public int[] getAprilTagPos(){
+//
+//    }
+}
+

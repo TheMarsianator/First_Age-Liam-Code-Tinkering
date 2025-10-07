@@ -125,10 +125,10 @@ public class SensorLimelight3A extends LinearOpMode {
 //                    }
 
 //                     Access classifier results
-                    List<LLResultTypes.ClassifierResult> classifierResults = result.getClassifierResults();
-                    for (LLResultTypes.ClassifierResult cr : classifierResults) {
-                        telemetry.addData("Classifier", "Class: %s, Confidence: %.2f", cr.getClassName(), cr.getConfidence());
-                    }
+//                    List<LLResultTypes.ClassifierResult> classifierResults = result.getClassifierResults();
+//                    for (LLResultTypes.ClassifierResult cr : classifierResults) {
+//                        telemetry.addData("Classifier", "Class: %s, Confidence: %.2f", cr.getClassName(), cr.getConfidence());
+//                    }
 //
 //                    // Access detector results
 //                    List<LLResultTypes.DetectorResult> detectorResults = result.getDetectorResults();
@@ -137,10 +137,10 @@ public class SensorLimelight3A extends LinearOpMode {
 //                    }
 //
 //                    // Access fiducial results
-//                    List<LLResultTypes.FiducialResult> fiducialResults = result.getFiducialResults();
-//                    for (LLResultTypes.FiducialResult fr : fiducialResults) {
-//                        telemetry.addData("Fiducial", "ID: %d, Family: %s, X: %.2f, Y: %.2f", fr.getFiducialId(), fr.getFamily(),fr.getTargetXDegrees(), fr.getTargetYDegrees());
-//                    }
+                    List<LLResultTypes.FiducialResult> fiducialResults = result.getFiducialResults();
+                    for (LLResultTypes.FiducialResult fr : fiducialResults) {
+                        telemetry.addData("Fiducial", "ID: %d, Family: %s, X: %.2f, Y: %.2f", fr.getFiducialId(), fr.getFamily(),fr.getTargetXDegrees(), fr.getTargetYDegrees());
+                    }
 
                     // Access color results
                     List<LLResultTypes.ColorResult> colorResults = result.getColorResults();
