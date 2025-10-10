@@ -137,24 +137,30 @@ public class SensorLimelight3A extends LinearOpMode {
 //                    }
 //
 //                    // Access fiducial results
+
                     List<LLResultTypes.FiducialResult> fiducialResults = result.getFiducialResults();
+                    int index = 0;
                     for (LLResultTypes.FiducialResult fr : fiducialResults) {
                         telemetry.addData("Fiducial", "ID: %d, Family: %s, X: %.2f, Y: %.2f", fr.getFiducialId(), fr.getFamily(),fr.getTargetXDegrees(), fr.getTargetYDegrees());
-                        limelightData.setParams(fr.getFiducialId(), fr.getFamily(),fr.getTargetXDegrees(), fr.getTargetYDegrees());
+                        if (index == 0) {
+                            limelightData.setParams(fr.getFiducialId(), fr.getFamily(), fr.getTargetXDegrees(), fr.getTargetYDegrees());
+                            limelightData.accurate = true;
+                        }
+                        index++;
                     }
 
                     // Access color results
-                    List<LLResultTypes.ColorResult> colorResults = result.getColorResults();
-                    int temp = 0;
-                    LLResultTypes.ColorResult colorResult = colorResults.get(0);
-                    for (LLResultTypes.ColorResult cr : colorResults) {
-                        if (colorResult.getTargetArea() < colorResults.get(temp).getTargetArea())
-                            temp++;
-                        else
-                            colorResult = colorResults.get(temp);
-                    }
-                    if (colorResult.getTargetXPixels() > 120)
-                        telemetry.addData("Largest Yellow Object", String.valueOf(colorResult.getTargetXDegrees()), String.valueOf(colorResult.getTargetYDegrees()));
+//                    List<LLResultTypes.ColorResult> colorResults = result.getColorResults();
+//                    int temp = 0;
+//                    LLResultTypes.ColorResult colorResult = colorResults.get(0);
+//                    for (LLResultTypes.ColorResult cr : colorResults) {
+//                        if (colorResult.getTargetArea() < colorResults.get(temp).getTargetArea())
+//                            temp++;
+//                        else
+//                            colorResult = colorResults.get(temp);
+//                    }
+//                    if (colorResult.getTargetXPixels() > 120)
+//                        telemetry.addData("Largest Yellow Object", String.valueOf(colorResult.getTargetXDegrees()), String.valueOf(colorResult.getTargetYDegrees()));
                 }
             } else {
                 telemetry.addData("Limelight", "No data available");

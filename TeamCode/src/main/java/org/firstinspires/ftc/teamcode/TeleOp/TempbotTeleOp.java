@@ -23,7 +23,7 @@ public class TempbotTeleOp extends OpMode {
     public void init() {
         telemetry.addLine("Initializing, please wait...");
         telemetry.update();
-        robot = new FirstAgeTempbot(hardwareMap, new Pose2d(0,0,0));
+        robot = new FirstAgeTempbot(hardwareMap, new Pose2d(0,0,0), this);
         driveButtonMap = new TempBotDrive();
         armButtonMap = new FirstAgeArm();
         telemetry.addLine("Ready.");
@@ -34,6 +34,7 @@ public class TempbotTeleOp extends OpMode {
     public void loop() {
         driveButtonMap.loop(robot, this);
         armButtonMap.loop(robot, this);
+        robot.runLimelight();
         telemetry.update();
     }
 }

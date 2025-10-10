@@ -19,7 +19,7 @@ public class ObservationPark extends LinearOpMode {
 
     @Override
     public void runOpMode() throws InterruptedException {
-        robot = new FirstAgeTempbot(hardwareMap, new Pose2d(new Vector2d(0,0),0));
+        robot = new FirstAgeTempbot(hardwareMap, new Pose2d(new Vector2d(0,0),0), this);
 
         robot.leftFront.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         robot.leftBack.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);

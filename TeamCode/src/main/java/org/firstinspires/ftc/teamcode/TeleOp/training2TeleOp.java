@@ -20,7 +20,7 @@ public class training2TeleOp extends OpMode {
     public void init() {
         telemetry.addLine("Initializing, please wait...");
         telemetry.update();
-        robot = new FirstAgeTempbot(hardwareMap, new Pose2d(0,0,0));
+        robot = new FirstAgeTempbot(hardwareMap, new Pose2d(0,0,0), this);
         driveButtonMap = new ExtraTrainBM();
         telemetry.addLine("Ready.");
         telemetry.update();
