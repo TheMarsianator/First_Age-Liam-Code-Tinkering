@@ -7,11 +7,10 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.ButtonMaps.AbstractButtonMap;
 import org.firstinspires.ftc.teamcode.ButtonMaps.Arm.FirstAgeArm;
 import org.firstinspires.ftc.teamcode.ButtonMaps.Drive.TempBotDrive;
-import org.firstinspires.ftc.teamcode.ButtonMaps.Drive.TrainingBM;
 import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeTempbot;
 
-@TeleOp(name="TempBot TeleOp")
-public class TempbotTeleOp extends OpMode {
+@TeleOp(name="TempBot TeleOp Blue")
+public class TempbotTeleOpBlue extends OpMode {
     //Global Variables
     FirstAgeTempbot robot;
 
@@ -30,11 +29,13 @@ public class TempbotTeleOp extends OpMode {
         telemetry.update();
     }
 
+    //This code runs through the other files on a clock to respond to inputs.
     @Override
     public void loop() {
         driveButtonMap.loop(robot, this);
         armButtonMap.loop(robot, this);
-        robot.runLimelight();
+        //This should be the april tag id for the blue tower.
+        robot.runLimelight(25);
         telemetry.update();
     }
 }
