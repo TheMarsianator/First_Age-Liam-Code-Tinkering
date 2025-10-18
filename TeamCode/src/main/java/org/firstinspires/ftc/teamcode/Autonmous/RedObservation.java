@@ -4,12 +4,12 @@ import com.acmerobotics.roadrunner.ftc.Encoder;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeRobot;
+import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeTempbot;
 
 
 @Autonomous()
 public class RedObservation extends LinearOpMode {
-    public FirstAgeRobot robot;
+    public FirstAgeTempbot robot;
     public Encoder par;
 
     @Override
