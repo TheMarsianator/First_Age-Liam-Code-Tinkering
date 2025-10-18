@@ -71,13 +71,11 @@ public class CommonDriveBM extends AbstractButtonMap {
             MotorPowers joystickPivotTurnMotorPowers = robot.pivotTurn(currentMotorPower*(Math.abs(opMode.gamepad1.right_stick_x)), opMode.gamepad1.right_stick_x > 0.1, opMode.gamepad1.right_stick_x < -0.1);
             mp = joystickPivotTurnMotorPowers;
         }
-
-        //Pivot Turn Using bumpers
-        if(opMode.gamepad1.right_bumper || opMode.gamepad1.left_bumper){
+        //Pivot turn using bumpers
+        if (opMode.gamepad1.right_bumper || opMode.gamepad1.left_bumper){
             MotorPowers bumperPivotTurnMotorPowers = robot.pivotTurn(currentMotorPower, opMode.gamepad1.right_bumper, opMode.gamepad1.left_bumper);
             opMode.telemetry.addLine("Bumper Pivot Turn Active!");
             mp = bumperPivotTurnMotorPowers;
-        }
 
         /*
          * Normal Drive
@@ -91,6 +89,12 @@ public class CommonDriveBM extends AbstractButtonMap {
                     opMode.gamepad1.right_trigger * triggerMultipler);
             opMode.telemetry.addLine("Trigger Right (forward) active!");
             opMode.telemetry.addData("Trigger Right: ", opMode.gamepad1.right_trigger);
+            if (opMode.gamepad1.right_bumper || opMode.gamepad1.left_bumper){
+                MotorPowers bumperPivotTurnMotorPowers = robot.pivotTurn(currentMotorPower, opMode.gamepad1.right_bumper, opMode.gamepad1.left_bumper);
+                opMode.telemetry.addLine("Bumper Pivot Turn Active!");
+                mp = bumperPivotTurnMotorPowers;
+
+
         }
         //Backward
         else if (opMode.gamepad1.left_trigger > 0.1) {
@@ -102,6 +106,8 @@ public class CommonDriveBM extends AbstractButtonMap {
             opMode.telemetry.addLine("Trigger Left (backward) active!");
             opMode.telemetry.addData("Trigger left: ", opMode.gamepad1.left_trigger);
         }
+
+            }
 
         /*
          * Button Y - Complete break

@@ -8,7 +8,6 @@ import org.firstinspires.ftc.teamcode.ButtonMaps.AbstractButtonMap;
 import org.firstinspires.ftc.teamcode.ButtonMaps.DPadControl;
 import org.firstinspires.ftc.teamcode.ButtonMaps.HolonomicDrive;
 import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
-import org.firstinspires.ftc.teamcode.ButtonMaps.SkystoneAbstractButtonMap;
 import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeRobot;
 
 @Config
@@ -22,7 +21,7 @@ public class TrainingBM extends AbstractButtonMap {
         mp = new MotorPowers(0);
         double multiplier =.7;
 
-        if(op.gamepad1.x){
+        if(opMode.gamepad1.x){
             mp=new MotorPowers(mp.leftFront * multiplier,
                     mp.rightFront*multiplier,
                     mp.leftBack * multiplier,
