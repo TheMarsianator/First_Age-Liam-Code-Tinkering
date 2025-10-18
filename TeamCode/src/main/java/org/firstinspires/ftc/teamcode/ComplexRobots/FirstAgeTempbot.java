@@ -103,55 +103,67 @@ public class FirstAgeTempbot extends MecanumDrive {
 
     public void runLimelight(int id){
 
-            LLStatus status = limelight.getStatus();
-            opMode.telemetry.addData("Name", "%s",
-                    status.getName());
-            opMode.telemetry.addData("LL", "Temp: %.1fC, CPU: %.1f%%, FPS: %d",
-                    status.getTemp(), status.getCpu(),(int)status.getFps());
-            opMode.telemetry.addData("Pipeline", "Index: %d, Type: %s",
-                    status.getPipelineIndex(), status.getPipelineType());
+        LLStatus status = limelight.getStatus();
+        opMode.telemetry.addData("Name", "%s",
+                status.getName());
+        opMode.telemetry.addData("LL", "Temp: %.1fC, CPU: %.1f%%, FPS: %d",
+                status.getTemp(), status.getCpu(),(int)status.getFps());
+        opMode.telemetry.addData("Pipeline", "Index: %d, Type: %s",
+                status.getPipelineIndex(), status.getPipelineType());
 
-            LLResult result = limelight.getLatestResult();
-            if (result != null) {
-                // Access general information
-                Pose3D botpose = result.getBotpose();
-                double captureLatency = result.getCaptureLatency();
-                double targetingLatency = result.getTargetingLatency();
-                double parseLatency = result.getParseLatency();
-                opMode.telemetry.addData("LL Latency", captureLatency + targetingLatency);
-                opMode.telemetry.addData("Parse Latency", parseLatency);
-                opMode.telemetry.addData("PythonOutput", java.util.Arrays.toString(result.getPythonOutput()));
-                opMode.telemetry.addLine("Limelight Works!");
+        LLResult result = limelight.getLatestResult();
+        if (result != null) {
+            // Access general information
+            Pose3D botpose = result.getBotpose();
+            double captureLatency = result.getCaptureLatency();
+            double targetingLatency = result.getTargetingLatency();
+            double parseLatency = result.getParseLatency();
+//                opMode.telemetry.addData("LL Latency", captureLatency + targetingLatency);
+//                opMode.telemetry.addData("Parse Latency", parseLatency);
+//                opMode.telemetry.addData("PythonOutput", java.util.Arrays.toString(result.getPythonOutput()));
+            opMode.telemetry.addLine("Limelight Works!");
 
-                if (result.isValid()) {
+            if (limelightData.accurate)
+                opMode.telemetry.addLine("Accurate Data!");
+            else
+                opMode.telemetry.addLine("No Accuracy!");
 
-                    opMode.telemetry.addData("tx", result.getTx());
-                    opMode.telemetry.addData("txnc", result.getTxNC());
-                    opMode.telemetry.addData("ty", result.getTy());
-                    opMode.telemetry.addData("tync", result.getTyNC());
 
-                    opMode.telemetry.addData("Botpose", botpose.toString());
-                    if (limelightData.accurate) {
-                        opMode.telemetry.addLine("Correct: ");
-                    }
-                    else
-                        opMode.telemetry.addLine("Bad");
+//
+            if (result.isValid()) {
+//                    opMode.telemetry.addData("tx", result.getTx());
+//                    opMode.telemetry.addData("txnc", result.getTxNC());
+//                    opMode.telemetry.addData("ty", result.getTy());
+//                    opMode.telemetry.addData("tync", result.getTyNC());
 
-                    // Access fiducial results (April Tags)
-                    List<LLResultTypes.FiducialResult> fiducialResults = result.getFiducialResults();
-                    if (fiducialResults.isEmpty())
-                        //This makes sure that if there are no detected april tags, it will not take old data
-                        limelightData.accurate = false;
-                    for (LLResultTypes.FiducialResult fr : fiducialResults) {
-                        opMode.telemetry.addData("Fiducial", "ID: %d, Family: %s, X: %.2f, Y: %.2f", fr.getFiducialId(), fr.getFamily(),fr.getTargetXDegrees(), fr.getTargetYDegrees());
-                        if (fr.getFiducialId() == id) {
+                opMode.telemetry.addData("Botpose", botpose.toString());
+
+                // Access fiducial results (April Tags)
+                List<LLResultTypes.FiducialResult> fiducialResults = result.getFiducialResults();
+                if (fiducialResults.isEmpty()) {
+                    //This makes sure that if there are no detected april tags, it will not take old data
+                    limelightData.accurate = false;
+                    opMode.telemetry.addLine("Nothing detected!");
+                }
+                boolean temp = false;
+                for (LLResultTypes.FiducialResult fr : fiducialResults) {
+//                        opMode.telemetry.addData("Fiducial", "ID: %d, Family: %s, X: %.2f, Y: %.2f", fr.getFiducialId(), fr.getFamily(),fr.getTargetXDegrees(), fr.getTargetYDegrees());
+                    if (fr.getFiducialId() == id) {
+                        temp = true;
                         limelightData.setParams(fr.getFiducialId(), fr.getFamily(), fr.getTargetXDegrees(), fr.getTargetYDegrees());
-                            limelightData.accurate = true;
-                            opMode.telemetry.addData("Correct tag: ", fr.getFiducialId());
-                        }
+                        limelightData.accurate = true;
+                        opMode.telemetry.addData("Correct tag: ", fr.getFiducialId());
+
                     }
 
-                    // Access color results
+                }
+                if (!temp) {
+                    limelightData.accurate = false;
+                    opMode.telemetry.addLine("Not right tag!");
+
+                }
+
+                // Access color results
 //                    List<LLResultTypes.ColorResult> colorResults = result.getColorResults();
 //                    int temp = 0;
 //                    LLResultTypes.ColorResult colorResult = colorResults.get(0);
@@ -164,14 +176,20 @@ public class FirstAgeTempbot extends MecanumDrive {
 //                    if (colorResult.getTargetXPixels() > 120)
 //                        telemetry.addData("Largest Yellow Object", String.valueOf(colorResult.getTargetXDegrees()), String.valueOf(colorResult.getTargetYDegrees()));
 //
-                }
-            } else {
-                opMode.telemetry.addData("Limelight", "No data available");
-                //Makes sure that we are only using data that is exists at the right moment, not old data or missing data.
+            }
+            else{
                 limelightData.accurate = false;
+                opMode.telemetry.addLine("No Tag!");
+
             }
 
-            opMode.telemetry.update();
+        } else {
+            opMode.telemetry.addData("Limelight", "No data available");
+            //Makes sure that we are only using data that is exists at the right moment, not old data or missing data.
+            limelightData.accurate = false;
+        }
+
+//            opMode.telemetry.update();
     }
 
 

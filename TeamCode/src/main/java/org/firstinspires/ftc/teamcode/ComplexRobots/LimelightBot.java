@@ -180,7 +180,7 @@ public class LimelightBot extends MecanumDriveNoMotors {
                 limelightData.accurate = false;
             }
 
-            opMode.telemetry.update();
+//            opMode.telemetry.update();
     }
 
 
