@@ -5,11 +5,13 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.limelightData;
 import org.firstinspires.ftc.teamcode.ButtonMaps.AbstractButtonMap;
+import org.firstinspires.ftc.teamcode.ButtonMaps.AbstractButtonMapLimelight;
 import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
 import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeTempbot;
+import org.firstinspires.ftc.teamcode.ComplexRobots.LimelightBot;
 
 @Config
-public class FirstAgeArm extends AbstractButtonMap {
+public class LimelightArm extends AbstractButtonMapLimelight {
     //TODO: Change back to private final when done with dash
     private MotorPowers mp;// = new MotorPowers(0);
     private double servoPosition;
@@ -17,18 +19,18 @@ public class FirstAgeArm extends AbstractButtonMap {
     private double timeBuffer = 200;
 
     @Override
-    public void loop(FirstAgeTempbot robot, OpMode opMode) {
+    public void loop(LimelightBot robot, OpMode opMode) {
 
         //Automatically Aim if there is a tag
-        if (opMode.gamepad2.x && opMode.getRuntime() - timeSince > timeBuffer) {
+        if (opMode.gamepad2.x) {
             if (limelightData.accurate) {
                 timeSince = opMode.getRuntime();
 //                robot.setServosTo(-1, 1, limelightData.directionToTag()[0], robot.aimServo);
 //                robot.setServosTo(-1, 1, limelightData.directionToTag()[1], robot.angleServo);
-                opMode.telemetry.addData("Aiming", "True");
+                opMode.telemetry.addLine("Aiming");
             }
             else{
-                opMode.telemetry.addData("Aiming", "No Tag");
+                opMode.telemetry.addLine("No Aiming");
             }
 
         }

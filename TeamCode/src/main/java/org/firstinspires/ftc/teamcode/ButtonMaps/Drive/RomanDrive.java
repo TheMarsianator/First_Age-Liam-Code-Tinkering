@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import org.firstinspires.ftc.teamcode.ButtonMaps.AbstractButtonMap;
 import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
 import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeTempbot;
-import org.firstinspires.ftc.teamcode.Drive.MecanumDrive;
+import org.firstinspires.ftc.teamcode.MecanumDrive;
 
 @Config
 public class RomanDrive extends AbstractButtonMap {
@@ -46,24 +46,24 @@ static double joystickLinearity = 4;
             double left_stick_y,
             double left_stick_x,
             boolean x) {
-        MecanumDrive md = new MecanumDrive();
+//        MecanumDrive md = new MecanumDrive();
         if (dpad_up) {
-            md.setForward(1);
+//            md.setForward(1);
         }
         if (dpad_down) {
-            md.setForward(-1);
+//            md.setForward(-1);
         }
         if (dpad_left) {
-            md.setRight(-1);
+//            md.setRight(-1);
         }
         if (dpad_right) {
-            md.setRight(1);
+//            md.setRight(1);
         }
 
         //Turn Left or Right
         if (left_trigger > triggerDeadZone || right_trigger > triggerDeadZone) {
-            double turnSpeed = Math.pow((right_trigger-triggerDeadZone), triggerLinearity)/Math.pow((1-triggerDeadZone), triggerLinearity) - Math.pow((left_trigger-triggerDeadZone), triggerLinearity)/Math.pow((1-triggerDeadZone), triggerLinearity); //look mommy an afront to coders everywhere (it also works first try :333)
-            md.setMovement(0, 0, turnSpeed);
+//            double turnSpeed = Math.pow((right_trigger-triggerDeadZone), triggerLinearity)/Math.pow((1-triggerDeadZone), triggerLinearity) - Math.pow((left_trigger-triggerDeadZone), triggerLinearity)/Math.pow((1-triggerDeadZone), triggerLinearity); //look mommy an afront to coders everywhere (it also works first try :333)
+//            md.setMovement(0, 0, turnSpeed);
         }
 /*
         //Turn Right
@@ -100,14 +100,16 @@ static double joystickLinearity = 4;
             if (left_stick_x < -joystickDeadZone) {
                 strafeSpeed = -Math.pow((left_stick_x+joystickDeadZone), joystickLinearity)/Math.pow((1-joystickDeadZone), joystickLinearity);
             }
-            md.setMovement(-forwardSpeed, strafeSpeed, turnSpeed);
+//            md.setMovement(-forwardSpeed, strafeSpeed, turnSpeed);
         }
 
         //Slow strafe while holding x
         if (x) {
-            md.applyMultiplier(0.5);
+//            md.applyMultiplier(0.5);
         }
 
-        return md.toMotorPowers();
+//        return md.toMotorPowers();
+        return null;
     }
+
 }

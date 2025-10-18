@@ -1,8 +1,5 @@
 package org.firstinspires.ftc.teamcode.ComplexRobots;
 
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.hardwareMap;
-import static org.firstinspires.ftc.robotcore.external.BlocksOpModeCompanion.telemetry;
-
 import com.acmerobotics.dashboard.config.Config;
 import com.acmerobotics.roadrunner.Pose2d;
 import com.qualcomm.hardware.limelightvision.LLResult;
@@ -14,23 +11,18 @@ import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-import org.firstinspires.ftc.robotcontroller.external.samples.SensorLimelight3A;
 import org.firstinspires.ftc.robotcontroller.external.samples.limelightData;
-import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
-import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
-import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.firstinspires.ftc.robotcore.external.navigation.Pose3D;
 import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
 import org.firstinspires.ftc.teamcode.MecanumDrive;
-import org.firstinspires.ftc.vision.apriltag.AprilTagDetection;
+import org.firstinspires.ftc.teamcode.MecanumDriveNoMotors;
 
 import java.util.List;
 
 //This is right now the same as the TrikeRobot, add Pivot turn at some point and some more functionality.
 
 @Config
-public class FirstAgeTempbot extends MecanumDrive {
+public class LimelightBot extends MecanumDriveNoMotors {
     enum Direction {
         UP,DOWN
     }
@@ -45,8 +37,8 @@ public class FirstAgeTempbot extends MecanumDrive {
 //    public final Servo turnServo;
     public final Limelight3A limelight;
 
-    public FirstAgeTempbot(HardwareMap hardwareMap, Pose2d pose, OpMode opMode) {
-        super(hardwareMap, pose);
+    public LimelightBot(HardwareMap hardwareMap, Pose2d pose, OpMode opMode) {
+//        super(hardwareMap, pose);
         this.opMode = opMode;
         limelight = hardwareMap.get(Limelight3A.class, "limelight");
 
@@ -117,37 +109,49 @@ public class FirstAgeTempbot extends MecanumDrive {
                 double captureLatency = result.getCaptureLatency();
                 double targetingLatency = result.getTargetingLatency();
                 double parseLatency = result.getParseLatency();
-                opMode.telemetry.addData("LL Latency", captureLatency + targetingLatency);
-                opMode.telemetry.addData("Parse Latency", parseLatency);
-                opMode.telemetry.addData("PythonOutput", java.util.Arrays.toString(result.getPythonOutput()));
+//                opMode.telemetry.addData("LL Latency", captureLatency + targetingLatency);
+//                opMode.telemetry.addData("Parse Latency", parseLatency);
+//                opMode.telemetry.addData("PythonOutput", java.util.Arrays.toString(result.getPythonOutput()));
                 opMode.telemetry.addLine("Limelight Works!");
 
-                if (result.isValid()) {
+                if (limelightData.accurate)
+                    opMode.telemetry.addLine("Accurate Data!");
+                else
+                    opMode.telemetry.addLine("No Accuracy!");
 
-                    opMode.telemetry.addData("tx", result.getTx());
-                    opMode.telemetry.addData("txnc", result.getTxNC());
-                    opMode.telemetry.addData("ty", result.getTy());
-                    opMode.telemetry.addData("tync", result.getTyNC());
+
+//
+                if (result.isValid()) {
+//                    opMode.telemetry.addData("tx", result.getTx());
+//                    opMode.telemetry.addData("txnc", result.getTxNC());
+//                    opMode.telemetry.addData("ty", result.getTy());
+//                    opMode.telemetry.addData("tync", result.getTyNC());
 
                     opMode.telemetry.addData("Botpose", botpose.toString());
-                    if (limelightData.accurate) {
-                        opMode.telemetry.addLine("Correct: ");
-                    }
-                    else
-                        opMode.telemetry.addLine("Bad");
 
                     // Access fiducial results (April Tags)
                     List<LLResultTypes.FiducialResult> fiducialResults = result.getFiducialResults();
-                    if (fiducialResults.isEmpty())
+                    if (fiducialResults.isEmpty()) {
                         //This makes sure that if there are no detected april tags, it will not take old data
                         limelightData.accurate = false;
+                        opMode.telemetry.addLine("Nothing detected!");
+                    }
+                    boolean temp = false;
                     for (LLResultTypes.FiducialResult fr : fiducialResults) {
-                        opMode.telemetry.addData("Fiducial", "ID: %d, Family: %s, X: %.2f, Y: %.2f", fr.getFiducialId(), fr.getFamily(),fr.getTargetXDegrees(), fr.getTargetYDegrees());
+//                        opMode.telemetry.addData("Fiducial", "ID: %d, Family: %s, X: %.2f, Y: %.2f", fr.getFiducialId(), fr.getFamily(),fr.getTargetXDegrees(), fr.getTargetYDegrees());
                         if (fr.getFiducialId() == id) {
-                        limelightData.setParams(fr.getFiducialId(), fr.getFamily(), fr.getTargetXDegrees(), fr.getTargetYDegrees());
+                            temp = true;
+                            limelightData.setParams(fr.getFiducialId(), fr.getFamily(), fr.getTargetXDegrees(), fr.getTargetYDegrees());
                             limelightData.accurate = true;
                             opMode.telemetry.addData("Correct tag: ", fr.getFiducialId());
+
                         }
+
+                    }
+                    if (!temp) {
+                        limelightData.accurate = false;
+                        opMode.telemetry.addLine("Not right tag!");
+
                     }
 
                     // Access color results
@@ -164,6 +168,12 @@ public class FirstAgeTempbot extends MecanumDrive {
 //                        telemetry.addData("Largest Yellow Object", String.valueOf(colorResult.getTargetXDegrees()), String.valueOf(colorResult.getTargetYDegrees()));
 //
                 }
+                else{
+                    limelightData.accurate = false;
+                    opMode.telemetry.addLine("No Tag!");
+
+                }
+
             } else {
                 opMode.telemetry.addData("Limelight", "No data available");
                 //Makes sure that we are only using data that is exists at the right moment, not old data or missing data.
