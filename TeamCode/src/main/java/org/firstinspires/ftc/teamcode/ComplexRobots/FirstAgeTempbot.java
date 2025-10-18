@@ -11,6 +11,7 @@ import com.qualcomm.hardware.limelightvision.LLStatus;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
@@ -83,7 +84,7 @@ public class FirstAgeTempbot extends MecanumDrive {
 
 
     public MotorPowers setAllMotorPowers(int i) {
-        return new MotorPowers(0,0,0,0);
+        return new MotorPowers(i,i,i,i);
     }
 
 
@@ -177,6 +178,20 @@ public class FirstAgeTempbot extends MecanumDrive {
     public void setServosTo(double min, double max, double value, Servo servo) {
         double scaledVal = (value - min) / (max - min);
         servo.setPosition(scaledVal);
+    }
+
+    public MotorPowers omniDrive(double directDrive, double strafe, double turn, double speed) {
+
+        return new MotorPowers(
+                tallSigmoid(speed * (directDrive + strafe + turn)),
+                tallSigmoid(speed * (directDrive - strafe - turn)),
+                tallSigmoid(speed * (directDrive - strafe + turn)),
+                tallSigmoid(speed * (directDrive + strafe - turn))
+        );
+    }
+
+    public double tallSigmoid(double input) {
+        return (1 / (1 + Math.exp(-input))) * 2 - 1;
     }
 }
 

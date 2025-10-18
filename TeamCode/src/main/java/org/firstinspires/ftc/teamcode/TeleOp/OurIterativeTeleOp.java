@@ -6,10 +6,11 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.ButtonMaps.AbstractButtonMap;
 import org.firstinspires.ftc.teamcode.ButtonMaps.Drive.HoloBM;
+import org.firstinspires.ftc.teamcode.ButtonMaps.Drive.HoloBMCohesive;
 import org.firstinspires.ftc.teamcode.ComplexRobots.FirstAgeTempbot;
 
-@TeleOp(name="Our TeleOp")
-public class OurTeleOp extends OpMode {
+@TeleOp(name="Our Cohesive TeleOp")
+public class OurIterativeTeleOp extends OpMode {
     //Global Variables
     FirstAgeTempbot robot;
 
@@ -21,7 +22,7 @@ public class OurTeleOp extends OpMode {
         telemetry.addLine("Initializing, please wait...");
         telemetry.update();
         robot = new FirstAgeTempbot(hardwareMap, new Pose2d(0,0,0), this);
-        driveButtonMap = new HoloBM();
+        driveButtonMap = new HoloBMCohesive();
         telemetry.addLine("Ready.");
         telemetry.update();
     }
