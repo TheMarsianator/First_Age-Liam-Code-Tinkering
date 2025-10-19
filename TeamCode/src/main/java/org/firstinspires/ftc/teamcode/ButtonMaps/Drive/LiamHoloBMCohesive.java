@@ -44,7 +44,7 @@ public class LiamHoloBMCohesive extends AbstractButtonMap {
         if (tu == 0)
             tu = turn;
 
-        MotorPowers mp = robot.omniDrive(str + opMode.gamepad1.left_stick_y, fow + opMode.gamepad1.left_stick_x, tu + opMode.gamepad1.right_stick_x, .8);
+        MotorPowers mp = robot.omniDrive(str + opMode.gamepad1.left_stick_x, fow - opMode.gamepad1.left_stick_y, tu - opMode.gamepad1.right_stick_x, .8);
         opMode.telemetry.update();
         robot.setMotorPowers(mp);
     }

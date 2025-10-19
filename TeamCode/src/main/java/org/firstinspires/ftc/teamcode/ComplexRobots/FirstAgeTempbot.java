@@ -9,10 +9,12 @@ import com.qualcomm.hardware.limelightvision.LLResult;
 import com.qualcomm.hardware.limelightvision.LLResultTypes;
 import com.qualcomm.hardware.limelightvision.LLStatus;
 import com.qualcomm.hardware.limelightvision.Limelight3A;
+import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcontroller.external.samples.SensorLimelight3A;
@@ -42,7 +44,7 @@ public class FirstAgeTempbot extends MecanumDrive {
     //    public final Servo angleServo;
     //    public final Servo intakeServo;
 
-
+    IMU imu;
 //    public final Servo turnServo;
     public final Limelight3A limelight;
 
@@ -50,6 +52,12 @@ public class FirstAgeTempbot extends MecanumDrive {
         super(hardwareMap, pose);
         this.opMode = opMode;
         limelight = hardwareMap.get(Limelight3A.class, "limelight");
+        imu = hardwareMap.get(IMU.class, "imu");
+        // Adjust the orientation parameters to match your robot
+        IMU.Parameters parameters = new IMU.Parameters(new RevHubOrientationOnRobot(
+                RevHubOrientationOnRobot.LogoFacingDirection.UP,
+                RevHubOrientationOnRobot.UsbFacingDirection.FORWARD));
+
 
 
 //        limelight.pipelineSwitch(0);

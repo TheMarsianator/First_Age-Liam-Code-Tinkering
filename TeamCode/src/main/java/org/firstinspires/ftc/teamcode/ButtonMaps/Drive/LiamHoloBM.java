@@ -31,7 +31,7 @@ public class LiamHoloBM extends AbstractButtonMap {
             forward += opMode.gamepad1.right_trigger;
 
 
-        MotorPowers mp = robot.omniDrive(strafe + opMode.gamepad1.left_stick_y, forward + opMode.gamepad1.left_stick_x, turn + opMode.gamepad1.right_stick_x, .8);
+        MotorPowers mp = robot.omniDrive(strafe + opMode.gamepad1.left_stick_x, forward - opMode.gamepad1.left_stick_y, turn - opMode.gamepad1.right_stick_x, .8);
         opMode.telemetry.update();
         robot.setMotorPowers(mp);
     }

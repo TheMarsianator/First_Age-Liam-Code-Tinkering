@@ -35,12 +35,14 @@ import com.qualcomm.hardware.rev.RevHubOrientationOnRobot;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Gamepad;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.IMU;
 import com.qualcomm.robotcore.hardware.VoltageSensor;
 
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.YawPitchRollAngles;
+import org.firstinspires.ftc.teamcode.ButtonMaps.HolonomicDrive;
 import org.firstinspires.ftc.teamcode.ButtonMaps.MotorPowers;
 import org.firstinspires.ftc.teamcode.messages.DriveCommandMessage;
 import org.firstinspires.ftc.teamcode.messages.MecanumCommandMessage;
@@ -209,6 +211,14 @@ public class MecanumDrive {
                     DualNum.cons(headingDelta, twist.angle.drop(1))
             );
         }
+    }
+
+    public MotorPowers FOD(Gamepad gamepad, double maxMotorPowers) {
+        return HolonomicDrive.fieldOrientedDrive(gamepad, maxMotorPowers, lazyImu.get());
+    }
+
+    public void resetYaw() {
+        lazyImu.get().resetYaw();
     }
 
     public MecanumDrive(HardwareMap hardwareMap, Pose2d pose) {
