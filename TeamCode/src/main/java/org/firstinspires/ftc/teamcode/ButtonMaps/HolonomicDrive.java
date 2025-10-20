@@ -12,8 +12,8 @@ public class HolonomicDrive {
     public static MotorPowers fieldOrientedDrive(Gamepad gamepad, double maxMotorPower, IMU imu){
         double botHeading = imu.getRobotYawPitchRollAngles().getYaw(AngleUnit.RADIANS);
         //Provide a deadzone of +-0.1
-        double x = gamepad.left_stick_x;
-        double y = -gamepad.left_stick_y;
+        double x = gamepad.left_stick_x > 0.1 || gamepad.left_stick_x < -0.1 ? gamepad.left_stick_x : 0;
+        double y = -gamepad.left_stick_y > 0.1 || gamepad.left_stick_y < -0.1 ? gamepad.left_stick_y : 0;
         double rotate = gamepad.right_stick_x > 0.1 || gamepad.right_stick_x < -0.1 ? gamepad.right_stick_x : 0;
         double rotX = (x * Math.cos(-botHeading) - y * Math.sin(-botHeading)) * 1.1;
         double rotY = x * Math.sin(-botHeading) + y * Math.cos(-botHeading);
@@ -39,7 +39,7 @@ public class HolonomicDrive {
         double backLeftPower = maxMotorPower*((rotY - rotX - rotate) / denominator);
         double frontRightPower = maxMotorPower*((rotY - rotX + rotate) / denominator);
         double backRightPower = maxMotorPower*((rotY + rotX + rotate) / denominator);
-//        frontLeftPower *= .5; backLeftPower *= .5; frontRightPower *= .5; backRightPower *= .5;
+        frontLeftPower *= .5; backLeftPower *= .5; frontRightPower *= .5; backRightPower *= .5;
         return new MotorPowers(frontLeftPower, frontRightPower, backLeftPower, backRightPower);
     }
 
